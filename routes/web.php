@@ -8,6 +8,8 @@ use App\Http\Controllers\TeacherAuthController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\AdminCourseController;
+use App\Http\Controllers\EnrollController;
+use App\Http\Controllers\Student\StudentAuthController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -21,9 +23,18 @@ use App\Http\Controllers\AdminCourseController;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/about-us', [HomeController::class, 'about'])->name('about');
-Route::get('/training-category', [HomeController::class, 'categoryTraining'])->name('training.category');
+Route::get('/training-category/{id}', [HomeController::class, 'categoryTraining'])->name('training.category');
 Route::get('/all-training', [HomeController::class, 'allTraining'])->name('training.all');
-Route::get('/training-detail', [HomeController::class, 'trainingDetail'])->name('training.detail');
+Route::get('/training-detail/{id}', [HomeController::class, 'trainingDetail'])->name('training.detail');
+
+Route::get('/training-enroll/{id}', [EnrollController::class, 'index'])->name('training.enroll');
+Route::post('/training-new-enroll/{id}', [EnrollController::class, 'newEnroll'])->name('training.new-enroll');
+Route::get('/training-complete-enroll/{id}', [EnrollController::class, 'completeEnroll'])->name('training.complete-enroll');
+
+Route::get('/student-dashboard', [StudentAuthController::class, 'dashboard'])->name('student.dashboard');
+Route::get('/student-logout', [StudentAuthController::class, 'logout'])->name('student.logout');
+Route::post('/student-login', [StudentAuthController::class, 'login'])->name('student.login');
+
 Route::get('/contact-us', [HomeController::class, 'contact'])->name('contact');
 Route::get('/login-registration', [HomeController::class, 'loginRegistration'])->name('login-registration');
 
@@ -65,6 +76,7 @@ Route::middleware([ 'auth:sanctum', config('jetstream.auth_session'), 'verified'
     Route::get('/admin/course-detail/{id}', [AdminCourseController::class, 'detail'])->name('admin.course-detail');
     Route::get('/admin/update-course-status/{id}', [AdminCourseController::class, 'updateStatus'])->name('admin.update-course-status');
     Route::get('/admin/update-course-offer-status/{id}', [AdminCourseController::class, 'updateOfferStatus'])->name('admin.update-course-offer-status');
+    Route::post('/admin/update-course-offer/{id}', [AdminCourseController::class, 'updateCourseOffer'])->name('admin.update-course-offer');
     Route::get('/admin/course-delete/{id}', [AdminCourseController::class, 'delete'])->name('admin.course-delete');
 
 

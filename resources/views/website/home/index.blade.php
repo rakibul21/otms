@@ -8,30 +8,19 @@
 @section('body')
     <div class="carousel slide" id="slider" data-bs-ride="carousel" data-bs-interval="1800">
         <div class="carousel-inner">
-            <div class="carousel-item active">
-                <img src="{{asset('/')}}website/img/s1.png" alt="" class="w-100" height="550"/>
-                <div class="carousel-caption">
-                    <h3>PHP With Laravel Framework</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A distinctio, dolorem doloremque eaque eligendi ex facilis inventore laudantium maxime non officiis quae quam quidem quo quod repellendus similique sunt temporibus?</p>
-                    <a href="" class="btn btn-dark px-5">Read More</a>
+            @foreach($offer_courses as $key => $offer_course)
+                <div class="carousel-item {{$key == 0 ? 'active' : ''}}">
+                    <img src="{{asset($offer_course->offer_image)}}" alt="" class="w-100" height="550"/>
+                    <div class="carousel-caption my-caption">
+                        <h3>{{$offer_course->title}}</h3>
+                        <h3>Offer Date: {{$offer_course->offer_date}}</h3>
+                        <a href="" class="btn btn-dark px-5">Read More</a>
+                    </div>
                 </div>
-            </div>
-            <div class="carousel-item">
-                <img src="{{asset('/')}}website/img/s2.png" alt="" class="w-100" height="550"/>
-                <div class="carousel-caption">
-                    <h3>Responsive Web Design</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A distinctio, dolorem doloremque eaque eligendi ex facilis inventore laudantium maxime non officiis quae quam quidem quo quod repellendus similique sunt temporibus?</p>
-                    <a href="" class="btn btn-dark px-5">Read More</a>
-                </div>
-            </div>
-            <div class="carousel-item">
-                <img src="{{asset('/')}}website/img/s3.jpg" alt="" class="w-100" height="550"/>
-                <div class="carousel-caption">
-                    <h3>Profession Digital Marketing</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A distinctio, dolorem doloremque eaque eligendi ex facilis inventore laudantium maxime non officiis quae quam quidem quo quod repellendus similique sunt temporibus?</p>
-                    <a href="" class="btn btn-dark px-5">Read More</a>
-                </div>
-            </div>
+
+            @endforeach
+
+
         </div>
         <a href="#slider" class="carousel-control-prev" data-bs-slide="prev">
             <span class="carousel-control-prev-icon"></span>
@@ -51,42 +40,20 @@
                 </div>
             </div>
             <div class="row mt-3">
-                <div class="col-md-4 mb-3">
-                    <div class="card">
-                        <img src="{{asset('/')}}website/img/team-1.jpg" alt="" class=""/>
-                        <div class="card-body">
-                            <h4>PHP With Laravel Framework</h4>
-                            <p class="mb-0">TK. 25000</p>
-                            <p class="">Starting Date: 10-01-2023</p>
-                            <hr/>
-                            <a href="{{route('training.detail')}}" class="btn btn-success">Read More</a>
+                @foreach($recent_courses as $recent_course)
+                    <div class="col-md-3 mb-3">
+                        <div class="card h-100">
+                            <img src="{{$recent_course->image}}" alt="" class="" height="200" width="220"/>
+                            <div class="card-body">
+                                <h4><a href="{{route('training.detail',['id' => $recent_course->id])}}" class="text-decoration-none text-dark">{{$recent_course->title}}</a></h4>
+                                <p class="mb-0">TK. {{$recent_course->fee}}</p>
+                                <p class="">Starting Date: {{$recent_course->starting_date}}</p>
+                                <hr/>
+                                <a href="{{route('training.detail',['id' => $recent_course->id])}}" class="btn btn-success">Read More</a>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-md-4 mb-3">
-                    <div class="card">
-                        <img src="{{asset('/')}}website/img/team-1.jpg" alt="" class=""/>
-                        <div class="card-body">
-                            <h4>PHP With Laravel Framework</h4>
-                            <p class="mb-0">TK. 25000</p>
-                            <p class="">Starting Date: 10-01-2023</p>
-                            <hr/>
-                            <a href="" class="btn btn-success">Read More</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 mb-3">
-                    <div class="card">
-                        <img src="{{asset('/')}}website/img/team-1.jpg" alt="" class=""/>
-                        <div class="card-body">
-                            <h4>PHP With Laravel Framework</h4>
-                            <p class="mb-0">TK. 25000</p>
-                            <p class="">Starting Date: 10-01-2023</p>
-                            <hr/>
-                            <a href="" class="btn btn-success">Read More</a>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </section>

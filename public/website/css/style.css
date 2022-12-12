@@ -21,6 +21,11 @@
     font-family: sans-serif;
 }
 
+.my-caption
+{
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
 
 .banner-card h1
 {

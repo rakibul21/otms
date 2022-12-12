@@ -24,6 +24,9 @@
     <link href="{{asset('/')}}admin/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
     <!-- Icons Css -->
     <link href="{{asset('/')}}admin/assets/css/icons.min.css" rel="stylesheet" type="text/css" />
+    <!-- Summernote css -->
+    <link href="{{asset('/')}}admin/assets/libs/summernote/summernote-bs4.min.css" rel="stylesheet" type="text/css" />
+
     <!-- App Css-->
     <link href="{{asset('/')}}admin/assets/css/app.min.css" rel="stylesheet" type="text/css" />
 
@@ -349,7 +352,7 @@
                             </a>
                             <a href="#" class="text-reset notification-item">
                                 <div class="media">
-                                    <img src="{{asset('/')}}admin/assets/images/users/avatar-3.jpg"
+                                    <img src="{{asset('/')}}admin/assets/images/users/ppp.jpg"
                                          class="mr-3 rounded-circle avatar-xs" alt="user-pic">
                                     <div class="media-body">
                                         <h6 class="mt-0 mb-1">James Lemire</h6>
@@ -402,9 +405,9 @@
                 <div class="dropdown d-inline-block">
                     <button type="button" class="btn header-item waves-effect" id="page-header-user-dropdown"
                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <img class="rounded-circle header-profile-user" src="{{asset('/')}}admin/assets/images/users/avatar-1.jpg"
+                        <img class="rounded-circle header-profile-user" src="{{asset('/')}}admin/assets/images/users/ppp.jpg"
                              alt="Header Avatar">
-                        <span class="d-none d-xl-inline-block ml-1">Henry</span>
+                        <span class="d-none d-xl-inline-block ml-1">Rakibul Hasan</span>
                         <i class="mdi mdi-chevron-down d-none d-xl-inline-block"></i>
                     </button>
                     <div class="dropdown-menu dropdown-menu-right">
@@ -733,6 +736,9 @@
 
 <!-- Datatable init js -->
 <script src="{{asset('/')}}admin/assets/js/pages/datatables.init.js"></script>
+
+<!-- Summernote js -->
+<script src="{{asset('/')}}admin/assets/libs/summernote/summernote-bs4.min.js"></script>
 
 <!-- App js -->
 <script src="{{asset('/')}}admin/assets/js/app.js"></script>

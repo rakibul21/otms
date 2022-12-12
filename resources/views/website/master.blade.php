@@ -15,18 +15,29 @@
         <div class="container">
             <a href="" class="navbar-brand">OTMS</a>
             <ul class="navbar-nav">
-                <li><a href="{{route('home')}}" class="nav-link">HOME</a></li>
+                <li><a href="{{route('home')}}" class="nav-link">Home</a></li>
                 <li><a href="{{route('about')}}" class="nav-link">About</a></li>
                 <li class="dropdown">
                     <a href="" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Training Category</a>
                     <ul class="dropdown-menu">
-                        <li><a href="{{route('training.category')}}" class="dropdown-item">Web Design</a></li>
-                        <li><a href="{{route('training.category')}}" class="dropdown-item">Web Development</a></li>
+                        @foreach($categories as $category)
+                            <li><a href="{{route('training.category',['id' => $category->id])}}" class="dropdown-item">{{$category->name}}</a></li>
+                        @endforeach
                     </ul>
                 </li>
                 <li><a href="{{route('training.all')}}" class="nav-link">All Training</a></li>
                 <li><a href="{{route('contact')}}" class="nav-link">Contact</a></li>
+                @if(Session::get('student_id'))
+                    <li class="dropdown">
+                        <a href="" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">{{Session::get('student_name')}}</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="{{route('student.dashboard')}}" class="dropdown-item">My Dashboard</a></li>
+                            <li><a href="{{route('student.logout')}}" class="dropdown-item">Logout</a></li>
+                        </ul>
+                    </li>
+                @else
                 <li><a href="{{route('login-registration')}}" class="nav-link">Login/Registration</a></li>
+                @endif
             </ul>
         </div>
     </nav>

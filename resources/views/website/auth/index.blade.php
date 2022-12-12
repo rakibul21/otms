@@ -20,7 +20,8 @@
                     <div class="card">
                         <div class="card-header">Login Form</div>
                         <div class="card-body">
-                            <form action="" method="post">
+                            <form action="{{route('student.login')}}" method="post">
+                                @csrf
                                 <div class="row mb-3">
                                     <label class="col-md-3">Email Address</label>
                                     <div class="col-md-9">

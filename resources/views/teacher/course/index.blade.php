@@ -35,7 +35,7 @@
                         <div class="form-group row mb-4">
                             <label for="horizontal-email-input2" class="col-sm-3 col-form-label">Course Description</label>
                             <div class="col-sm-9">
-                                <textarea name="description" class="form-control Summernote" id="horizontal-email-input2" > </textarea>
+                                <textarea name="description" class="form-control summernote" id="horizontal-email-input2" > </textarea>
                             </div>
                         </div>
                         <div class="form-group row mb-4">

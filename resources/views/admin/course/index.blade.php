@@ -17,18 +17,21 @@
                             <th>fee</th>
                             <th>Starting Date</th>
                             <th>Image</th>
+                            <th>Status</th>
+                            <th>Offer Status</th>
                             <th>Action</th>
                         </tr>
                         </thead>
                         <tbody>
                         @foreach($courses as $course)
-                            <tr>
+                            <tr class="{{$course->status == 1 ? '' :'bg-warning'}}">
                                 <td>{{$loop->iteration}}</td>
                                 <td>{{$course->title}}</td>
                                 <td>{{$course->fee}}</td>
-                                <td>{{$course->fee}}</td>
                                 <td>{{$course->starting_date}}</td>
                                 <td><img src="{{asset($course->image)}}" alt="{{$course->title}}" height="50" width="70"/></td>
+                                <td>{{$course->status == 1 ? 'Published' : 'Unpublished'}}</td>
+                                <td>{{$course->offer_status == 1 ? 'Published' : 'Unpublished'}}</td>
                                 <td>
                                     <a href="{{route('admin.course-detail', ['id' => $course->id])}}" class="btn btn-outline-success">
                                         <i class="fa fa-book-open"></i>
