@@ -10,7 +10,7 @@ class Entroll extends Model
     use HasFactory;
     public static $enroll;
 
-    public static function newEnroll($request, $courseId,$studentId)
+    public static function newEnroll($request, $studentId, $courseId)
     {
         self::$enroll = new Entroll();
         self::$enroll->course_id = $courseId;
@@ -25,5 +25,41 @@ class Entroll extends Model
     public function course()
     {
         return $this->belongsTo(Course::class);
+    }
+
+    public function student()
+    {
+        return $this->belongsTo(Student::class);
+    }
+
+    public static function updateEnrollStatus($request , $id)
+    {
+        self::$enroll = Entroll::find($id);
+        if ($request->enroll_status == 'Pending')
+        {
+            self::$enroll->enroll_status  = 'Pending';
+            self::$enroll->payment_status ='Pending';
+            self::$enroll->payment_amount = 0;
+        }
+        elseif ($request->enroll_status == 'Processing')
+        {
+            self::$enroll->enroll_status  = 'Processing';
+            self::$enroll->payment_status ='Processing';
+            self::$enroll->payment_amount = 0;
+        }
+        elseif ($request->enroll_status == 'Complete')
+        {
+            self::$enroll->enroll_status  = 'Complete';
+            self::$enroll->payment_status ='Complete';
+            self::$enroll->payment_amount = self::$enroll->course->fee;
+        }
+        elseif ($request->enroll_status == 'Cancel')
+        {
+            self::$enroll->enroll_status  = 'Cancel';
+            self::$enroll->payment_status ='Cancel';
+            self::$enroll->payment_amount = 0;
+
+        }
+        self::$enroll->save();
     }
 }

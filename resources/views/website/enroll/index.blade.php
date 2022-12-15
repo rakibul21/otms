@@ -19,6 +19,7 @@
                     <div class="card border-0 shadow">
                         <div class="card-header">Course Enroll From</div>
                         <div class="card-body">
+                            <h4 class="text-center text-danger">{{Session::get('message')}}</h4>
                             <form action="{{route('training.new-enroll',['id' => $id])}}" method="post">
                                 @csrf
                                 <div class="row mb-3">

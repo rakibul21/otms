@@ -12,6 +12,7 @@
                 <div class="col">
                     <div class="card card-body text-center border-0">
                         <h3 class="">Login / Registration </h3>
+                        <h4 class="text-center text-danger">{{Session::get('message')}}</h4>
                     </div>
                 </div>
             </div>
@@ -35,6 +36,12 @@
                                     </div>
                                 </div>
                                 <div class="row mb-3">
+                                    <label class="col-md-3">Mobile</label>
+                                    <div class="col-md-9">
+                                        <input type="number" class="form-control" name="mobile"/>
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
                                     <label class="col-md-3"></label>
                                     <div class="col-md-9">
                                         <input type="submit" class="btn btn-success w-100" value="Login"/>
@@ -48,7 +55,7 @@
                     <div class="card">
                         <div class="card-header">Registration Form</div>
                         <div class="card-body">
-                            <form action="" method="post">
+                            <form action="{{route("student.register")}}" method="post">
                                 <div class="row mb-3">
                                     <label class="col-md-3">Full Name</label>
                                     <div class="col-md-9">

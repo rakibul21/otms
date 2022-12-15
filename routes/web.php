@@ -10,6 +10,8 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\AdminCourseController;
 use App\Http\Controllers\EnrollController;
 use App\Http\Controllers\Student\StudentAuthController;
+use App\Http\Controllers\Student\StudentController;
+use App\Http\Controllers\AdminEnrollController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -31,25 +33,42 @@ Route::get('/training-enroll/{id}', [EnrollController::class, 'index'])->name('t
 Route::post('/training-new-enroll/{id}', [EnrollController::class, 'newEnroll'])->name('training.new-enroll');
 Route::get('/training-complete-enroll/{id}', [EnrollController::class, 'completeEnroll'])->name('training.complete-enroll');
 
-Route::get('/student-dashboard', [StudentAuthController::class, 'dashboard'])->name('student.dashboard');
-Route::get('/student-logout', [StudentAuthController::class, 'logout'])->name('student.logout');
+
 Route::post('/student-login', [StudentAuthController::class, 'login'])->name('student.login');
+
+
 
 Route::get('/contact-us', [HomeController::class, 'contact'])->name('contact');
 Route::get('/login-registration', [HomeController::class, 'loginRegistration'])->name('login-registration');
+Route::get('/student-registration', [StudentAuthController::class, 'register'])->name('student.register');
+
+Route::middleware(['teacher'])->group(function ()
+{
+
+    Route::get('/teacher/dashboard', [TeacherAuthController::class, 'dashboard'])->name('teacher.dashboard');
+    Route::post('/teacher/logout', [TeacherAuthController::class, 'logout'])->name('teacher.logout');
+
+    Route::get('/course/add', [CourseController::class, 'index'])->name('course.add');
+    Route::post('/course/create', [CourseController::class, 'create'])->name('course.create');
+    Route::get('/course/manage', [CourseController::class, 'manage'])->name('course.manage');
+    Route::get('/course/edit/{id}', [CourseController::class, 'edit'])->name('course.edit');
+    Route::post('/course/update/{id}', [CourseController::class, 'update'])->name('course.update');
+    Route::get('/course/delete/{id}', [CourseController::class, 'delete'])->name('course.delete');
+});
+
+Route::middleware(['student'])->group(function ()
+{
+    Route::get('/student-dashboard', [StudentAuthController::class, 'dashboard'])->name('student.dashboard');
+    Route::get('/student-logout', [StudentAuthController::class, 'logout'])->name('student.logout');
+    Route::get('/student-all-course', [StudentController::class, 'allcourse'])->name('student.all-course');
+
+});
 
 
 Route::get('/teacher/login', [TeacherAuthController::class, 'index'])->name('teacher.login');
 Route::post('/teacher/login', [TeacherAuthController::class, 'login'])->name('teacher.login');
-Route::get('/teacher/dashboard', [TeacherAuthController::class, 'dashboard'])->name('teacher.dashboard');
-Route::post('/teacher/logout', [TeacherAuthController::class, 'logout'])->name('teacher.logout');
 
-Route::get('/course/add', [CourseController::class, 'index'])->name('course.add');
-Route::post('/course/create', [CourseController::class, 'create'])->name('course.create');
-Route::get('/course/manage', [CourseController::class, 'manage'])->name('course.manage');
-Route::get('/course/edit/{id}', [CourseController::class, 'edit'])->name('course.edit');
-Route::post('/course/update/{id}', [CourseController::class, 'update'])->name('course.update');
-Route::get('/course/delete/{id}', [CourseController::class, 'delete'])->name('course.delete');
+
 
 
 Route::middleware([ 'auth:sanctum', config('jetstream.auth_session'), 'verified'])->group(function () {
@@ -79,6 +98,11 @@ Route::middleware([ 'auth:sanctum', config('jetstream.auth_session'), 'verified'
     Route::post('/admin/update-course-offer/{id}', [AdminCourseController::class, 'updateCourseOffer'])->name('admin.update-course-offer');
     Route::get('/admin/course-delete/{id}', [AdminCourseController::class, 'delete'])->name('admin.course-delete');
 
+    Route::get('/admin/manage-enroll', [AdminEnrollController::class, 'index'])->name('admin.manage-enroll');
+    Route::get('/admin/enroll-detail/{id}', [AdminEnrollController::class, 'detail'])->name('admin.enroll-detail');
+    Route::get('/admin/edit-enroll-status/{id}', [AdminEnrollController::class, 'editStatus'])->name('admin.edit-enroll-status');
+    Route::post('/admin/update-enroll-status/{id}', [AdminEnrollController::class, 'updateStatus'])->name('admin.update-enroll-status');
+    Route::get('/admin/delete-enroll/{id}', [AdminEnrollController::class, 'delete'])->name('admin.delete-enroll');
 
 
 

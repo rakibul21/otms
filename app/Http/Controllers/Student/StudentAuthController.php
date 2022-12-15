@@ -35,8 +35,20 @@ class StudentAuthController extends Controller
 
     public function register(Request $request)
     {
+        $this->validate($request,[
+           'name' => 'required',
+           'email' => 'required',
+           'mobile' => 'required',
+           'password' => 'required',
+        ]);
 
+        $this->student = Student::newStudent($request);
+        Session::put('student_id',$this->student->id);
+        Session::put('student_name',$this->student->name);
+
+        return redirect('/student-dashboard');
     }
+
 
     public function dashboard()
     {

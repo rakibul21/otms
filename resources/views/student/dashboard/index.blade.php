@@ -14,7 +14,7 @@
                     <div class="card card-body">
                         <ul class="list-group">
                             <li class="list-group-item"><a href="" >My Profile</a></li>
-                            <li class="list-group-item"><a href="" >My Course</a></li>
+                            <li class="list-group-item"><a href="{{route('student.all-course')}}" >My Course</a></li>
                             <li class="list-group-item"><a href="" >Change Password</a></li>
                             <li class="list-group-item"><a href="" >My Dashboard</a></li>
                         </ul>
