@@ -12,6 +12,9 @@ use App\Http\Controllers\EnrollController;
 use App\Http\Controllers\Student\StudentAuthController;
 use App\Http\Controllers\Student\StudentController;
 use App\Http\Controllers\AdminEnrollController;
+use App\Http\Controllers\AdminStudentController;
+use App\Http\Controllers\AdminUserController;
+use App\Mail\EnrollConfirmationMail;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -22,6 +25,12 @@ use App\Http\Controllers\AdminEnrollController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+
+
+Route::get('/send-mail', [HomeController::class, 'sendMail'])->name('send-mail');
+
+
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/about-us', [HomeController::class, 'about'])->name('about');
@@ -56,13 +65,7 @@ Route::middleware(['teacher'])->group(function ()
     Route::get('/course/delete/{id}', [CourseController::class, 'delete'])->name('course.delete');
 });
 
-Route::middleware(['student'])->group(function ()
-{
-    Route::get('/student-dashboard', [StudentAuthController::class, 'dashboard'])->name('student.dashboard');
-    Route::get('/student-logout', [StudentAuthController::class, 'logout'])->name('student.logout');
-    Route::get('/student-all-course', [StudentController::class, 'allcourse'])->name('student.all-course');
 
-});
 
 
 Route::get('/teacher/login', [TeacherAuthController::class, 'index'])->name('teacher.login');
@@ -103,6 +106,17 @@ Route::middleware([ 'auth:sanctum', config('jetstream.auth_session'), 'verified'
     Route::get('/admin/edit-enroll-status/{id}', [AdminEnrollController::class, 'editStatus'])->name('admin.edit-enroll-status');
     Route::post('/admin/update-enroll-status/{id}', [AdminEnrollController::class, 'updateStatus'])->name('admin.update-enroll-status');
     Route::get('/admin/delete-enroll/{id}', [AdminEnrollController::class, 'delete'])->name('admin.delete-enroll');
+
+    Route::get('/admin/manage-student', [AdminStudentController::class, 'index'])->name('admin.manage-student');
+    Route::get('/admin/student-detail/{id}', [AdminStudentController::class, 'detail'])->name('admin.student-detail');
+    Route::get('/admin/student-status/{id}', [AdminStudentController::class, 'updateStatus'])->name('admin.student-status');
+
+    Route::get('/admin/user-add', [AdminUserController::class, 'index'])->name('admin.user-add');
+    Route::post('/admin/user-create', [AdminUserController::class, 'create'])->name('admin.user-create');
+    Route::get('/admin/user-manage', [AdminUserController::class, 'manage'])->name('admin.user-manage');
+    Route::get('/user/edit/{id}', [AdminUserController::class, 'edit'])->name('admin.user-edit');
+    Route::post('/user/update/{id}', [AdminUserController::class, 'update'])->name('admin.user-update');
+    Route::get('/user/delete/{id}', [AdminUserController::class, 'delete'])->name('admin.user-delete');
 
 
 

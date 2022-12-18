@@ -79,30 +79,6 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4 mb-3">
-                    <div class="card">
-                        <img src="{{asset('/')}}website/img/team-2.jpg" alt="" class=""/>
-                        <div class="card-body">
-                            <h4>PHP With Laravel Framework</h4>
-                            <p class="mb-0">TK. 25000</p>
-                            <p class="">Starting Date: 10-01-2023</p>
-                            <hr/>
-                            <a href="" class="btn btn-success">Read More</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 mb-3">
-                    <div class="card">
-                        <img src="{{asset('/')}}website/img/team-2.jpg" alt="" class=""/>
-                        <div class="card-body">
-                            <h4>PHP With Laravel Framework</h4>
-                            <p class="mb-0">TK. 25000</p>
-                            <p class="">Starting Date: 10-01-2023</p>
-                            <hr/>
-                            <a href="" class="btn btn-success">Read More</a>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
     </section>

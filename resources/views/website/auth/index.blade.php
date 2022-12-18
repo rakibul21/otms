@@ -36,12 +36,6 @@
                                     </div>
                                 </div>
                                 <div class="row mb-3">
-                                    <label class="col-md-3">Mobile</label>
-                                    <div class="col-md-9">
-                                        <input type="number" class="form-control" name="mobile"/>
-                                    </div>
-                                </div>
-                                <div class="row mb-3">
                                     <label class="col-md-3"></label>
                                     <div class="col-md-9">
                                         <input type="submit" class="btn btn-success w-100" value="Login"/>

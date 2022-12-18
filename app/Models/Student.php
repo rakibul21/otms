@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Student extends Model
 {
     use HasFactory;
-    public static $student;
+    public static $student, $message ;
 
     public static function newStudent($request)
     {
@@ -28,5 +28,28 @@ class Student extends Model
         self::$student->password = bcrypt($request->mobile);
         self::$student->save();
         return self::$student;
+    }
+
+    public function enrolls()
+    {
+        return $this->hasMany(Entroll::class);
+    }
+
+    public static function UpdateStatus($id)
+    {
+        self::$student = Student::find($id);
+        if (self::$student->status == 1)
+        {
+            self::$student->status = 0;
+            self::$message = 'Student status info inactive successfully';
+        }
+        else
+        {
+            self::$student->status = 1;
+            self::$message = 'Student status info active successfully';
+        }
+        self::$student->save();
+        return self::$message;
+
     }
 }

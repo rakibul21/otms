@@ -2,12 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\EnrollConfirmationMail;
 use App\Models\Category;
 use App\Models\Course;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class HomeController extends Controller
 {
+
     public function index()
     {
         return view('website.home.index',[
