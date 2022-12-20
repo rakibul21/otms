@@ -16,6 +16,7 @@ class HomeController extends Controller
         return view('website.home.index',[
             'recent_courses' => Course::where('status',1)->orderBy('id','desc')->take(8)->get(),
             'offer_courses' => Course::where('offer_status',1)->orderBy('id','desc')->take(4)->get(),
+            'popular_courses' => Course::where('status',1)->orderBy('hit_count' , 'desc')->take(6)->get()
         ]);
     }
 

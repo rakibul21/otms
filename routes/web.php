@@ -49,7 +49,7 @@ Route::post('/student-login', [StudentAuthController::class, 'login'])->name('st
 
 Route::get('/contact-us', [HomeController::class, 'contact'])->name('contact');
 Route::get('/login-registration', [HomeController::class, 'loginRegistration'])->name('login-registration');
-Route::get('/student-registration', [StudentAuthController::class, 'register'])->name('student.register');
+Route::post('/student-registration', [StudentAuthController::class, 'register'])->name('student.register');
 
 Route::middleware(['teacher'])->group(function ()
 {

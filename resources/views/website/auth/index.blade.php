@@ -18,7 +18,7 @@
             </div>
             <div class="row mt-3">
                 <div class="col-md-6">
-                    <div class="card">
+                    <div class="card h-100">
                         <div class="card-header">Login Form</div>
                         <div class="card-body">
                             <form action="{{route('student.login')}}" method="post">
@@ -46,10 +46,11 @@
                     </div>
                 </div>
                 <div class="col-md-6">
-                    <div class="card">
+                    <div class="card h-100">
                         <div class="card-header">Registration Form</div>
                         <div class="card-body">
                             <form action="{{route("student.register")}}" method="post">
+                                @csrf
                                 <div class="row mb-3">
                                     <label class="col-md-3">Full Name</label>
                                     <div class="col-md-9">
@@ -60,6 +61,12 @@
                                     <label class="col-md-3">Email Address</label>
                                     <div class="col-md-9">
                                         <input type="email" class="form-control" name="email"/>
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <label class="col-md-3">Mobile</label>
+                                    <div class="col-md-9">
+                                        <input type="number" class="form-control" name="mobile"/>
                                     </div>
                                 </div>
                                 <div class="row mb-3">
