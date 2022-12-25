@@ -524,9 +524,9 @@
                             <span>Setting Module</span>
                         </a>
                         <ul class="sub-menu" aria-expanded="false">
-                            <li><a href="projects-grid.html">Manage Company</a></li>
-                            <li><a href="projects-list.html">Manage About US</a></li>
-                            <li><a href="projects-list.html">Manage Contact</a></li>
+                            <li><a href="{{route('manage-company')}}">Manage Company</a></li>
+                            <li><a href="{{route('manage-about')}}">Manage About US</a></li>
+                            <li><a href="{{route('manage-contact')}}">Manage Contact</a></li>
                         </ul>
                     </li>
                 </ul>

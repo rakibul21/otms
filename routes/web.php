@@ -15,6 +15,7 @@ use App\Http\Controllers\AdminEnrollController;
 use App\Http\Controllers\AdminStudentController;
 use App\Http\Controllers\AdminUserController;
 use App\Mail\EnrollConfirmationMail;
+use App\Http\Controllers\SettingController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -118,6 +119,11 @@ Route::middleware([ 'auth:sanctum', config('jetstream.auth_session'), 'verified'
     Route::get('/user/edit/{id}', [AdminUserController::class, 'edit'])->name('admin.user-edit');
     Route::post('/user/update/{id}', [AdminUserController::class, 'update'])->name('admin.user-update');
     Route::get('/user/delete/{id}', [AdminUserController::class, 'delete'])->name('admin.user-delete');
+
+
+    Route::get('/manage/company', [SettingController::class, 'manageCompany'])->name('manage-company');
+    Route::get('/manage/about', [SettingController::class, 'about'])->name('manage-about');
+    Route::get('/manage/contact', [SettingController::class, 'contact'])->name('manage-contact');
 
 
 
