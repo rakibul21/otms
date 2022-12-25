@@ -6,7 +6,7 @@
 <head>
 
     <meta charset="utf-8" />
-    <title>Dashboard | Skote - Responsive Bootstrap 4 Admin Dashboard</title>
+    <title>Dashboard | OTMS - Responsive Bootstrap 4 Admin Dashboard</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
     <meta content="Themesbrand" name="author" />
@@ -56,7 +56,8 @@
                                     <img src="{{asset('/')}}admin/assets/images/logo-light.svg" alt="" height="22">
                                 </span>
                         <span class="logo-lg">
-                                    <img src="{{asset('/')}}admin/assets/images/logo-light.png" alt="" height="19">
+                            <h3 style="color:white">OTMS</h3>
+{{--                                    <img src="{{asset('/')}}admin/assets/images/logo-light.png" alt="" height="19">--}}
                                 </span>
                     </a>
                 </div>
