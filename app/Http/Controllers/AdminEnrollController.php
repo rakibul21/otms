@@ -22,7 +22,6 @@ class AdminEnrollController extends Controller
    {
        $pdf = PDF::loadView('admin.enroll.invoice',['enroll' => Entroll::find($id)]);
 //       return $pdf->download('pdf_file.pdf');
-
        return $pdf->stream('pdf_file.pdf');
 //       return view('admin.enroll.invoice');
    }
