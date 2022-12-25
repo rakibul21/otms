@@ -106,6 +106,7 @@ Route::middleware([ 'auth:sanctum', config('jetstream.auth_session'), 'verified'
     Route::get('/admin/edit-enroll-status/{id}', [AdminEnrollController::class, 'editStatus'])->name('admin.edit-enroll-status');
     Route::post('/admin/update-enroll-status/{id}', [AdminEnrollController::class, 'updateStatus'])->name('admin.update-enroll-status');
     Route::get('/admin/delete-enroll/{id}', [AdminEnrollController::class, 'delete'])->name('admin.delete-enroll');
+    Route::get('/admin/download-invoice/{id}', [AdminEnrollController::class, 'download'])->name('admin.download-invoice');
 
     Route::get('/admin/manage-student', [AdminStudentController::class, 'index'])->name('admin.manage-student');
     Route::get('/admin/student-detail/{id}', [AdminStudentController::class, 'detail'])->name('admin.student-detail');

@@ -28,17 +28,25 @@
                                 @else
                                     <td> </td>
                                 @endif
+
+                                @if(isset($enroll->student->name))
                                 <td>{{$enroll->student->name.'('.$enroll->student->mobile.')'}}</td>
+                                @else
+                                    <td> </td>
+                                @endif
+
                                 <td>{{$enroll->enroll_status}}</td>
                                 <td>
                                     <a href="{{route('admin.enroll-detail', ['id' => $enroll->id])}}" class="btn btn-outline-success">
-                                        <i class="fa fa-book-open"></i>
+                                        <i class="fa fa-book-open">Detail</i>
+                                    <a href="{{route('admin.download-invoice', ['id' => $enroll->id])}}" class="btn btn-outline-info">
+                                        <i class="fa fa-download">Download</i>
                                     </a>
                                     <a href="{{route('admin.edit-enroll-status', ['id' => $enroll->id])}}" class="btn btn-primary {{$enroll->enroll_status == 'Complete' ? 'disabled' : ''}}">
-                                        <i class="fa fa-arrow-up"></i>
+                                        <i class="fa fa-arrow-up">Edit</i>
                                     </a>
                                     <a href="{{route('admin.delete-enroll', ['id' => $enroll->id])}}" class="btn btn-outline-danger {{$enroll->enroll_status == 'Complete' ? 'disabled' : ''}}" >
-                                        <i class="fa fa-trash"></i>
+                                        <i class="fa fa-trash">Delete</i>
                                     </a>
                                 </td>
                             </tr>

@@ -56,7 +56,7 @@
                 @endforeach
             </div>
         </div>
-    </section>
+    </section>//
     <section class="py-5 bg-light">
         <div class="container">
             <div class="row bg-danger">
