@@ -4,8 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Entroll;
 use Illuminate\Http\Request;
-use PDF ;
-
+use PDF;
 class AdminEnrollController extends Controller
 {
    public function index()

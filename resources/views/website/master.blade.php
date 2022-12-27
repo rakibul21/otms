@@ -90,5 +90,23 @@
 
     <script src="{{asset('/')}}website/js/jquery-3.6.1.js"></script>
     <script src="{{asset('/')}}website/js/bootstrap.bundle.js"></script>
+
+    <script>
+        $('#email').blur(function () {
+            var email = $(this).val();
+            $.ajax({
+                type : "GET",
+                url : "{{url('/get-student-email-by-email')}}",
+                data: {email: email},
+                dataType: 'JSON',
+                success: function (response){
+                    if(response.id)
+                    {
+                        $('#emailError').text('Sorry this email already exist.Please try new one');
+                    }
+                }
+            });
+        });
+    </script>
 </body>
 </html>

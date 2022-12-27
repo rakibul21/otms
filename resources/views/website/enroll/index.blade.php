@@ -32,8 +32,8 @@
                                 <div class="row mb-3">
                                     <label for="" class="col-md-3">Email Address</label>
                                     <div class="col-md-9">
-                                        <input type="email" @if(Session::get('student_id')) value="{{$student->email}}" readonly @endif class="form-control" name="email"/>
-                                        <span class="text-danger">{{$errors->has('email') ? $errors->first('email') : ''}}</span>
+                                        <input id="email" type="email" @if(Session::get('student_id')) value="{{$student->email}}" readonly @endif class="form-control" name="email"/>
+                                        <span id="emailError" class="text-danger">{{$errors->has('email') ? $errors->first('email') : ''}}</span>
                                     </div>
                                 </div>
                                 <div class="row mb-3">

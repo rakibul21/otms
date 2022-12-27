@@ -16,6 +16,7 @@ use App\Http\Controllers\AdminStudentController;
 use App\Http\Controllers\AdminUserController;
 use App\Mail\EnrollConfirmationMail;
 use App\Http\Controllers\SettingController;
+use App\Http\Controllers\PdfController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -40,6 +41,7 @@ Route::get('/all-training', [HomeController::class, 'allTraining'])->name('train
 Route::get('/training-detail/{id}', [HomeController::class, 'trainingDetail'])->name('training.detail');
 
 Route::get('/training-enroll/{id}', [EnrollController::class, 'index'])->name('training.enroll');
+Route::get('/get-student-email-by-email', [EnrollController::class, 'getEmail'])->name('training.get-student-email-by-email');
 Route::post('/training-new-enroll/{id}', [EnrollController::class, 'newEnroll'])->name('training.new-enroll');
 Route::get('/training-complete-enroll/{id}', [EnrollController::class, 'completeEnroll'])->name('training.complete-enroll');
 
@@ -107,7 +109,10 @@ Route::middleware([ 'auth:sanctum', config('jetstream.auth_session'), 'verified'
     Route::get('/admin/edit-enroll-status/{id}', [AdminEnrollController::class, 'editStatus'])->name('admin.edit-enroll-status');
     Route::post('/admin/update-enroll-status/{id}', [AdminEnrollController::class, 'updateStatus'])->name('admin.update-enroll-status');
     Route::get('/admin/delete-enroll/{id}', [AdminEnrollController::class, 'delete'])->name('admin.delete-enroll');
+
     Route::get('/admin/download-invoice/{id}', [AdminEnrollController::class, 'download'])->name('admin.download-invoice');
+
+//    Route::get('/admin/download-invoice/{id}', [PdfController::class, 'download'])->name('admin.download-invoice');
 
     Route::get('/admin/manage-student', [AdminStudentController::class, 'index'])->name('admin.manage-student');
     Route::get('/admin/student-detail/{id}', [AdminStudentController::class, 'detail'])->name('admin.student-detail');

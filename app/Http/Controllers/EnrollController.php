@@ -34,10 +34,10 @@ class EnrollController extends Controller
                 'email' => 'required|unique:students,email',
                 'mobile' => 'required|unique:students,mobile',
             ], [
-                'name.required' => 'input something here',
+                'name.required' => 'name required',
                 'name.alpha' => 'do not write numeric here',
-                'email.required' => 'vai eta ki korlen',
-                'email.unique' => 'Masud tmi ki kono din kharap hobe na',
+                'email.required' => 'email required',
+                'email.unique' => 'Sorry this email already exist',
             ]);
             $this->student = Student::newStudent($request);
         }
@@ -73,6 +73,13 @@ class EnrollController extends Controller
     public function completeEnroll($id)
     {
         return view('website.enroll.complete-enroll',['enroll' => Entroll::find($id)]);
+    }
+
+    public function getEmail()
+    {
+        $email = $_GET['email'];
+        $this->student = Student::where('email', $email)->first();
+        return response()->json($this->student);
     }
 
 
